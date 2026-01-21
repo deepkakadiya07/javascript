@@ -1,11 +1,904 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>javascript</title>
+    <title>Javascript</title>
+    <!-- <script src="variable.js"></script> -->
+    <script src="datatypes.js"></script>
 </head>
+
 <body>
-    <script src="variable.js"></script>
+
+
+    <!-- <h1>Example or Excercise:</h1>
+    <div>
+        <h3>Example 1 :</h3>
+        <p>console.log(nm);</p>
+        <p>let nm = "name";</p>
+        <p>Answer or Error: Uncaught ReferenceError: Cannot access 'nm' before initialization
+            at variable.js:113:13</p>
+        <p>Why : Because let variables are hoisted but not initialized until their declaration is reached. </p>
+    </div>
+
+    <div>
+        <h3>Example 2 :</h3>
+        <p>console.log(b);</p>
+        <p>var b = "username";</p>
+        <p>Answer or Error: undefined </p>
+        <p>Why : Because var variables are hoisted and initialized with undefined. </p>
+    </div>
+
+    <div>
+        <h3>Example 3 :</h3>
+        <p>var x = 1;</p>
+        <p>{
+            var x= 2;
+            }
+        </p>
+        <p>console.log(x);</p>
+        <p>Answer or Error: 2 </p>
+        <p>Why : Because var variables are function-scoped, so the inner block shares the same variable.</p>
+    </div>
+
+    <div>
+        <h3>Example 4 :</h3>
+        <p>let a = 10; </p>
+        <p>{
+            let a = 20;
+            console.log("Inside:", a);
+            }</p>
+        <p>
+            console.log("Outside:", a);
+        </p>
+        <p>Answer or Error: Inside: 20 <br> Outside: 10</p>
+        <p>Why : Because let variables are block-scoped, so the inner block has its own variable.</p>
+    </div>
+
+    <div>
+        <h3>Example 5 :</h3>
+        <p>const person = {name: "demo"}; </p>
+        on console.log
+        <p>person.name= "user"; ✅</p>
+        <p>person = {} ; ❌ </p>
+        <p>Answer or Error: Uncaught TypeError: Assignment to constant variable. </p>
+        <p>Why : Because const variables cannot be reassigned, but their properties can be modified.</p>
+    </div> -->
+    <!-- <script src="variable.js"></script> -->
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Example</th>
+                <th>Code</th>
+                <th>Output / Error</th>
+                <th>Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    console.log(nm);<br>
+                    let nm = "name";
+                </td>
+                <td>
+                    Uncaught ReferenceError:<br>
+                    Cannot access 'nm' before initialization
+                </td>
+                <td>
+                    <code>let</code> variables are hoisted but not initialized until their declaration is reached.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Example 2</td>
+                <td>
+                    console.log(b);<br>
+                    var b = "username";
+                </td>
+                <td>undefined</td>
+                <td>
+                    <code>var</code> variables are hoisted and initialized with <code>undefined</code>.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Example 3</td>
+                <td>
+                    var x = 1;<br>
+                    {<br>
+                    &nbsp;&nbsp;var x = 2;<br>
+                    }<br>
+                    console.log(x);
+                </td>
+                <td>2</td>
+                <td>
+                    <code>var</code> is function-scoped, so the inner block shares the same variable.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Example 4</td>
+                <td>
+                    let a = 10;<br>
+                    {<br>
+                    &nbsp;&nbsp;let a = 20;<br>
+                    &nbsp;&nbsp;console.log("Inside:", a);<br>
+                    }<br>
+                    console.log("Outside:", a);
+                </td>
+                <td>
+                    Inside: 20<br>
+                    Outside: 10
+                </td>
+                <td>
+                    <code>let</code> is block-scoped, so the inner block has its own variable.
+                </td>
+            </tr>
+
+            <tr>
+                <td>Example 5</td>
+                <td>
+                    const person = { name: "demo" };<br>
+                    person.name = "user"; ✅<br>
+                    person = {}; ❌
+                </td>
+                <td>
+                    Uncaught TypeError:<br>
+                    Assignment to constant variable
+                </td>
+                <td>
+                    <code>const</code> variables cannot be reassigned, but object properties can be modified.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tbody>
+            <th>Datatypes example </th>
+            <th>
+                <pre>// Data Types:
+// Two Type of Data Types:
+// 1. Primitive Data Types
+// copy --> real value
+let a = 5;
+let b = a;
+
+// types: string, number, boolean, null, undefined, symbol, bigint
+
+// 2. Non-Primitive Data Types (Reference Data Types) [], (), {}
+// copy --> give refrence of parent
+let d = [1, 2, 3];
+let e = d;
+
+types: arrays [], objects {}, functions ()</pre>
+            </th>
+            <th>Answer</th>
+            <th>Explanation</th>
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    a
+                </td>
+                <td>
+                    5
+                </td>
+            </tr>
+            <tr>
+                <td>Example 2</td>
+                <td>
+                    b
+                </td>
+                <td>
+                    5
+                </td>
+            </tr>
+            <tr>
+                <td>Example 3</td>
+                <td>
+                    a+b
+                </td>
+                <td>
+                    10
+                </td>
+            </tr>
+            <tr>
+                <td>Example 4</td>
+                <td>
+                    d
+                </td>
+                <td>
+                    (3) [1, 2, 3]
+                </td>
+            </tr>
+            <tr>
+                <td>Example 5</td>
+                <td>
+                    e
+                </td>
+                <td>
+                    (3) [1, 2, 3]
+                </td>
+            </tr>
+            <tr>
+                <td>Example 6</td>
+                <td>
+                    d.pop()
+                </td>
+                <td>
+                    3
+                </td>
+            </tr>
+            <tr>
+                <td>Example 7</td>
+                <td>
+                    e
+                </td>
+                <td>
+                    (2) [1, 2]
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tbody>
+            <th>Premitive Datatypes example with typeof </th>
+            <th>
+                <pre>// types: string, number, boolean, null, undefined, symbol, bigint
+
+// string:
+// '' - single quotes
+// "" - double quotes
+// `` - backticks
+
+let d = "name";
+d = "username";
+d = `firstname`;
+
+// number:
+let e = 12;
+e = 12.25;
+e = -25;
+// boolean:
+let f = true;
+f = false;
+
+// null:
+// you give a value
+let g = null;
+
+// undefined:
+// you don't give a value, by default value
+let h;</pre>
+            </th>
+            <th>Answer</th>
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    d
+                </td>
+                <td>
+                    'firstname'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 2</td>
+                <td>
+                    e
+                </td>
+                <td>
+                    -25
+                </td>
+            </tr>
+            <tr>
+                <td>Example 3</td>
+                <td>
+                    typeof d
+                </td>
+                <td>
+                    'string'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 4</td>
+                <td>
+                    typeof e
+                </td>
+                <td>
+                    'number'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 5</td>
+                <td>
+                    typeof "hello world"
+                </td>
+                <td>
+                    'string'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 6</td>
+                <td>
+                    typeof 24
+                </td>
+                <td>
+                    'number'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 7</td>
+                <td>
+                    typeof NULL
+                </td>
+                <td>
+                    'undefined'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 8</td>
+                <td>
+                    typeof null
+                </td>
+                <td>
+                    'object'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 9</td>
+                <td>
+                    typeof [1,2,3]
+                </td>
+                <td>
+                    'object'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 10</td>
+                <td>
+                    f
+                </td>
+                <td>
+                    false
+                </td>
+            </tr>
+            <tr>
+                <td>Example 11</td>
+                <td>
+                    g
+                </td>
+                <td>
+                    null
+                </td>
+            </tr>
+            <tr>
+                <td>Example 12</td>
+                <td>
+                    typeof f
+                </td>
+                <td>
+                    'boolean'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 13</td>
+                <td>
+                    typeof g
+                </td>
+                <td>
+                    'object'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 14</td>
+                <td>
+                    h
+                </td>
+                <td>
+                    undefined
+                </td>
+            </tr>
+            <tr>
+                <td>Example 15</td>
+                <td>
+                    typeof h
+                </td>
+                <td>
+                    'undefined'
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tbody>
+            <th>Premitive Datatypes example with symbol </th>
+            <th>
+                <pre>
+
+// symbol:
+// unique immutable value
+let u1 = Symbol("uid");
+let u2 = Symbol("uid");
+// check u1===u2
+let obj = { uid: 1, name: "test", email: "test@test.com" };
+let u3 = "uid";
+let u4 = Symbol("uid");
+// obj[u3] = "001";</pre>
+            </th>
+            <th>Answer</th>
+
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    u1
+                </td>
+                <td>
+                    Symbol(uid)
+                </td>
+            </tr>
+            <tr>
+                <td>Example 2</td>
+                <td>
+                    u2
+                </td>
+                <td>
+                    Symbol(uid)
+                </td>
+            </tr>
+            <tr>
+                <td>Example 3</td>
+                <td>
+                    u3
+                </td>
+                <td>
+                    'uid'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 4</td>
+                <td>
+                    u4
+                </td>
+                <td>
+                    Symbol(uid)
+                </td>
+            </tr>
+            <tr>
+                <td>Example 5</td>
+                <td>
+                    obj
+                </td>
+                <td>
+                    {uid: 1, name: 'test', email: 'test@test.com'}
+                </td>
+            </tr>
+            <tr>
+                <td>Example 6</td>
+                <td>
+                    obj[u3] = "2"
+                </td>
+                <td>
+                    '2'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 7</td>
+                <td>
+                    obj
+                </td>
+                <td>
+                    {uid: '2', name: 'test', email: 'test@test.com'}
+                </td>
+            </tr>
+            <tr>
+                <td>Example 8</td>
+                <td>
+                    obj[u4] = "3"
+                </td>
+                <td>
+                    '3'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 9</td>
+                <td>
+                    obj
+                </td>
+                <td>
+                    {uid: '2', name: 'test', email: 'test@test.com', Symbol(uid): '3'}
+                </td>
+            </tr>
+        </tbody>
+
+        <br>
+        <br>
+    </table>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tbody>
+            <th>Premitive Datatypes example with bigint </th>
+            <th>
+                <pre>
+
+//bigint:
+// cheak range of number, Number.MAX_SAFE_INTEGER
+let number = 9007199254740991;
+number = number + 6;
+let num2 = 9007199254740991n;
+num2 + 4n;</pre>
+            </th>
+            <th>Answer</th>
+
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    number
+                </td>
+                <td>
+                    9007199254740997
+                </td>
+            </tr>
+            <tr>
+                <td>Example 2</td>
+                <td>
+                    num2
+                </td>
+                <td>
+                    9007199254740991n
+                </td>
+            </tr>
+            <tr>
+                <td>Example 3</td>
+                <td>
+                    num2 + 10n
+                </td>
+                <td>
+                    9007199254741001n
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tbody>
+            <th>Non-Primitive Data Types </th>
+            <th>
+                <pre>
+// types: arrays [], objects {}, functoins ()
+let temp_array = ["user1", "user2", "user3"];
+let temp_obj = { name: "test", age: 9, phone_number: 558998554 };
+let profiles = [
+    { name: "test1", age: 10, phone_number: 98989775 },
+    { name: "test2", age: 15, phone_number: 9898889775 },
+    { name: "test3", age: 11, phone_number: 9898975575 },
+];
+function name(params) {}</pre>
+            </th>
+            <th>Answer</th>
+
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    temp_array
+                </td>
+                <td>
+                    ['user1', 'user2', 'user3']
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tbody>
+            <th> Dynamic Typing</th>
+            <th>
+                <pre>
+let u_name = "username"; // string
+u_name = 123; // number
+u_name = {}; // object
+// javascript --> typescript(ts)
+
+// typeof quirks
+// typeof 12
+// check type of variable use --> ex. typeof NaN, typeof
+null, 1 + "1", 1 == "1", 1 === "1"
+// why typeof NaN --> number
+// NaN is a failed number oprations that why that type is
+number
+// ex. "hello" - 5 --> NaN</pre>
+            </th>
+            <th>Answer</th>
+
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    u_name
+                </td>
+                <td>
+                    123
+                </td>
+            </tr>
+            <tr>
+                <td>Example 2</td>
+                <td>
+                    typeof u_name
+                </td>
+                <td>
+                    'number'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 3</td>
+                <td>
+                    typeof NaN
+                </td>
+                <td>
+                    'number'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 4</td>
+                <td>
+                    let A = "Hello" + 5
+                </td>
+                <td>
+                    undefined
+                </td>
+            </tr>
+            <tr>
+                <td>Example 5</td>
+                <td>
+                    typeof A
+                </td>
+                <td>
+                    'undefined'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 6</td>
+                <td>
+                    let B = "Hello" - 5
+                </td>
+                <td>
+                    undefined
+                </td>
+            </tr>
+            <tr>
+                <td>Example 7</td>
+                <td>
+                    typeof b
+                </td>
+                <td>
+                    'undefined'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 8</td>
+                <td>
+                    A
+                </td>
+                <td>
+                    'Hello5'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 9</td>
+                <td>
+                    B
+                </td>
+                <td>
+                    NaN
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <br>
+    <br>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tbody>
+            <th> Truthy vs Falsy Values</th>
+            <th>
+                <pre>
+// type coeration
+// "5" + 1 // + --> Value Add and Coeration(Mix)
+// "5" - 1
+
+// Truthy vs Falsy Values
+// 0, false, "", null, undefined, NaN, documnet.all, -- false
+// ex. !!0 -- check value is true and false
+// ex. if(null){}, js convert it into false
+// ex. if(-1){}, js convert it into true
+// all --> true</pre>
+            </th>
+            <th>Answer</th>
+
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    10 + "10"
+                </td>
+                <td>
+                    '1010'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 2</td>
+                <td>
+                    10 == "10"
+                </td>
+                <td>
+                    true
+                </td>
+            </tr>
+            <tr>
+                <td>Example 3</td>
+                <td>
+                    10 === "10"
+                </td>
+                <td>
+                    false
+                </td>
+            </tr>
+            <tr>
+                <td>Example 4</td>
+                <td>
+                    "hello" + " world"
+                </td>
+                <td>
+                    'hello world'
+                </td>
+            </tr>
+            <tr>
+                <td>Example 5</td>
+                <td>
+                    10 - "5"
+                </td>
+                <td>
+                    5
+                </td>
+            </tr>
+            <tr>
+                <td>Example 6</td>
+                <td>
+                    !!0
+                </td>
+                <td>
+                    false
+                </td>
+            </tr>
+            <tr>
+                <td>Example 7</td>
+                <td>
+                    !!21
+                </td>
+                <td>
+                    true
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+    <h1>Javascript Datatype</h1>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tbody>
+            <tr>
+                <th>Example</th>
+                <th>Code</th>
+                <th>Output / Error</th>
+                <th>Explanation</th>
+            </tr>
+            <tr>
+                <td>Example 1</td>
+                <td>
+                    true + false
+                </td>
+                <td>
+                    1
+                </td>
+                <td>
+                    why : true + false = 1 because true = 1 and false = 0 and 1 + 0 = 1
+                </td>
+            </tr>
+            <tr>
+                <td>Example 2</td>
+                <td>
+                    null + 1
+                </td>
+                <td>
+                    1
+                </td>
+                <td>
+                    why : null + 1 = 1 because null = 0 and 0 + 1 = 1
+                </td>
+            </tr>
+            <tr>
+                <td>Example 3</td>
+                <td>
+                    "12" + 12
+                </td>
+                <td>
+                    "1212"
+                </td>
+                <td>
+                    why : "12" + 12 = "1212" because "12" = "12" and "12" + "12" = "1212"
+                </td>
+            </tr>
+            <tr>
+                <td>Example 4</td>
+                <td>
+                    !! undefined
+                </td>
+                <td>
+                    false
+                </td>
+                <td>
+                    why : !! undefined = false because !! undefined = false
+                </td>
+            </tr>
+            <tr>
+                <td>Example 5</td>
+                <td>
+                    "12" - 1
+                </td>
+                <td>
+                    11
+                </td>
+                <td>
+                    why : "12" - 1 = 11 because "12" = "12" and "12" - 1 = 11
+                </td>
+            </tr>
+            <tr>
+                <td>Example 6</td>
+                <td>
+                    typeof NaN
+                </td>
+                <td>
+                    number
+                </td>
+                <td>
+                    why : typeof NaN = number because NaN is a failed number oprations that why that type is number
+                </td>
+            </tr>
+            <tr>
+                <td>Example 7</td>
+                <td>
+                    Undefined vs Null
+                </td>
+                <td>
+
+                    <p>let x;</p>
+                    <p>console.log(x);</p>
+                    <p>let y = null;</p>
+                    <p>console.log(y);</p>
+                    undefined
+                </td>
+                <td>
+                    why : let x; = undefined and let y = null; = null
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
 </body>
+
 </html>
