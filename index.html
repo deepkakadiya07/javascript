@@ -4,16 +4,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javascript</title>
+    <title>Javascript - Learning Guide</title>
     <!-- <script src="variable.js"></script> -->
     <!-- <script src="datatypes.js"></script> -->
-    <script src="operator.js"></script>
+    <!-- <script src="operator.js"></script> -->
+     <script src="controlflow.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* HEADER STYLES */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        header .logo::before {
+            content: "{ }";
+            font-size: 1.5rem;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 0.25rem;
+        }
+
+        header nav a:hover {
+            color: #ffd700;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* MAIN CONTENT */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        /* TABLE STYLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        table th {
+            padding: 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        table td {
+            padding: 1rem 1.2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        table tbody tr {
+            transition: all 0.3s ease;
+        }
+
+        table tbody tr:hover {
+            background-color: #f0f4ff;
+            transform: translateY(-2px);
+            box-shadow: inset 0 0 10px rgba(102, 126, 234, 0.1);
+        }
+
+        table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #764ba2;
+        }
+
+        /* FOOTER STYLES */
+        footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: auto;
+            border-top: 3px solid #667eea;
+        }
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        footer .footer-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        footer .footer-section p,
+        footer .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        footer .footer-section a:hover {
+            color: #ffd700;
+        }
+
+        footer .footer-section ul {
+            list-style: none;
+        }
+
+        footer .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer .footer-bottom {
+            border-top: 1px solid #555;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        footer .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        footer .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            color: #ffd700;
+        }
+
+        footer .social-links a:hover {
+            background: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            table th,
+            table td {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            footer .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            main {
+                margin: 1rem auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <!-- HEADER -->
+    <header>
+        <nav>
+            <div class="logo">JavaScript Learning</div>
+            <ul>
+                <li><a href="#variables">Variables</a></li>
+                <li><a href="#datatypes">Data Types</a></li>
+                <li><a href="#operators">Operators</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
 
 
-    <!-- <h1>Example or Excercise:</h1>
+        <!-- <h1>Example or Excercise:</h1>
     <div>
         <h3>Example 1 :</h3>
         <p>console.log(nm);</p>
@@ -66,103 +342,103 @@
         <p>Answer or Error: Uncaught TypeError: Assignment to constant variable. </p>
         <p>Why : Because const variables cannot be reassigned, but their properties can be modified.</p>
     </div> -->
-    <!-- <script src="variable.js"></script> -->
+        <!-- <script src="variable.js"></script> -->
 
-    <table border="1" cellpadding="8" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Example</th>
-                <th>Code</th>
-                <th>Output / Error</th>
-                <th>Explanation</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    console.log(nm);<br>
-                    let nm = "name";
-                </td>
-                <td>
-                    Uncaught ReferenceError:<br>
-                    Cannot access 'nm' before initialization
-                </td>
-                <td>
-                    <code>let</code> variables are hoisted but not initialized until their declaration is reached.
-                </td>
-            </tr>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Example</th>
+                    <th>Code</th>
+                    <th>Output / Error</th>
+                    <th>Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        console.log(nm);<br>
+                        let nm = "name";
+                    </td>
+                    <td>
+                        Uncaught ReferenceError:<br>
+                        Cannot access 'nm' before initialization
+                    </td>
+                    <td>
+                        <code>let</code> variables are hoisted but not initialized until their declaration is reached.
+                    </td>
+                </tr>
 
-            <tr>
-                <td>Example 2</td>
-                <td>
-                    console.log(b);<br>
-                    var b = "username";
-                </td>
-                <td>undefined</td>
-                <td>
-                    <code>var</code> variables are hoisted and initialized with <code>undefined</code>.
-                </td>
-            </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        console.log(b);<br>
+                        var b = "username";
+                    </td>
+                    <td>undefined</td>
+                    <td>
+                        <code>var</code> variables are hoisted and initialized with <code>undefined</code>.
+                    </td>
+                </tr>
 
-            <tr>
-                <td>Example 3</td>
-                <td>
-                    var x = 1;<br>
-                    {<br>
-                    &nbsp;&nbsp;var x = 2;<br>
-                    }<br>
-                    console.log(x);
-                </td>
-                <td>2</td>
-                <td>
-                    <code>var</code> is function-scoped, so the inner block shares the same variable.
-                </td>
-            </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        var x = 1;<br>
+                        {<br>
+                        &nbsp;&nbsp;var x = 2;<br>
+                        }<br>
+                        console.log(x);
+                    </td>
+                    <td>2</td>
+                    <td>
+                        <code>var</code> is function-scoped, so the inner block shares the same variable.
+                    </td>
+                </tr>
 
-            <tr>
-                <td>Example 4</td>
-                <td>
-                    let a = 10;<br>
-                    {<br>
-                    &nbsp;&nbsp;let a = 20;<br>
-                    &nbsp;&nbsp;console.log("Inside:", a);<br>
-                    }<br>
-                    console.log("Outside:", a);
-                </td>
-                <td>
-                    Inside: 20<br>
-                    Outside: 10
-                </td>
-                <td>
-                    <code>let</code> is block-scoped, so the inner block has its own variable.
-                </td>
-            </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        let a = 10;<br>
+                        {<br>
+                        &nbsp;&nbsp;let a = 20;<br>
+                        &nbsp;&nbsp;console.log("Inside:", a);<br>
+                        }<br>
+                        console.log("Outside:", a);
+                    </td>
+                    <td>
+                        Inside: 20<br>
+                        Outside: 10
+                    </td>
+                    <td>
+                        <code>let</code> is block-scoped, so the inner block has its own variable.
+                    </td>
+                </tr>
 
-            <tr>
-                <td>Example 5</td>
-                <td>
-                    const person = { name: "demo" };<br>
-                    person.name = "user"; ✅<br>
-                    person = {}; ❌
-                </td>
-                <td>
-                    Uncaught TypeError:<br>
-                    Assignment to constant variable
-                </td>
-                <td>
-                    <code>const</code> variables cannot be reassigned, but object properties can be modified.
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <br>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tbody>
-            <th>Datatypes example </th>
-            <th>
-                <pre>// Data Types:
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        const person = { name: "demo" };<br>
+                        person.name = "user"; ✅<br>
+                        person = {}; ❌
+                    </td>
+                    <td>
+                        Uncaught TypeError:<br>
+                        Assignment to constant variable
+                    </td>
+                    <td>
+                        <code>const</code> variables cannot be reassigned, but object properties can be modified.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>Datatypes example </th>
+                <th>
+                    <pre>// Data Types:
 // Two Type of Data Types:
 // 1. Primitive Data Types
 // copy --> real value
@@ -177,82 +453,82 @@ let d = [1, 2, 3];
 let e = d;
 
 types: arrays [], objects {}, functions ()</pre>
-            </th>
-            <th>Answer</th>
-            <th>Explanation</th>
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    a
-                </td>
-                <td>
-                    5
-                </td>
-            </tr>
-            <tr>
-                <td>Example 2</td>
-                <td>
-                    b
-                </td>
-                <td>
-                    5
-                </td>
-            </tr>
-            <tr>
-                <td>Example 3</td>
-                <td>
-                    a+b
-                </td>
-                <td>
-                    10
-                </td>
-            </tr>
-            <tr>
-                <td>Example 4</td>
-                <td>
-                    d
-                </td>
-                <td>
-                    (3) [1, 2, 3]
-                </td>
-            </tr>
-            <tr>
-                <td>Example 5</td>
-                <td>
-                    e
-                </td>
-                <td>
-                    (3) [1, 2, 3]
-                </td>
-            </tr>
-            <tr>
-                <td>Example 6</td>
-                <td>
-                    d.pop()
-                </td>
-                <td>
-                    3
-                </td>
-            </tr>
-            <tr>
-                <td>Example 7</td>
-                <td>
-                    e
-                </td>
-                <td>
-                    (2) [1, 2]
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                </th>
+                <th>Answer</th>
+                <th>Explanation</th>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        a
+                    </td>
+                    <td>
+                        5
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        b
+                    </td>
+                    <td>
+                        5
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        a+b
+                    </td>
+                    <td>
+                        10
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        d
+                    </td>
+                    <td>
+                        (3) [1, 2, 3]
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        e
+                    </td>
+                    <td>
+                        (3) [1, 2, 3]
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        d.pop()
+                    </td>
+                    <td>
+                        3
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        e
+                    </td>
+                    <td>
+                        (2) [1, 2]
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <br>
-    <br>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tbody>
-            <th>Premitive Datatypes example with typeof </th>
-            <th>
-                <pre>// types: string, number, boolean, null, undefined, symbol, bigint
+        <br>
+        <br>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>Premitive Datatypes example with typeof </th>
+                <th>
+                    <pre>// types: string, number, boolean, null, undefined, symbol, bigint
 
 // string:
 // '' - single quotes
@@ -278,153 +554,153 @@ let g = null;
 // undefined:
 // you don't give a value, by default value
 let h;</pre>
-            </th>
-            <th>Answer</th>
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    d
-                </td>
-                <td>
-                    'firstname'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 2</td>
-                <td>
-                    e
-                </td>
-                <td>
-                    -25
-                </td>
-            </tr>
-            <tr>
-                <td>Example 3</td>
-                <td>
-                    typeof d
-                </td>
-                <td>
-                    'string'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 4</td>
-                <td>
-                    typeof e
-                </td>
-                <td>
-                    'number'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 5</td>
-                <td>
-                    typeof "hello world"
-                </td>
-                <td>
-                    'string'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 6</td>
-                <td>
-                    typeof 24
-                </td>
-                <td>
-                    'number'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 7</td>
-                <td>
-                    typeof NULL
-                </td>
-                <td>
-                    'undefined'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 8</td>
-                <td>
-                    typeof null
-                </td>
-                <td>
-                    'object'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 9</td>
-                <td>
-                    typeof [1,2,3]
-                </td>
-                <td>
-                    'object'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 10</td>
-                <td>
-                    f
-                </td>
-                <td>
-                    false
-                </td>
-            </tr>
-            <tr>
-                <td>Example 11</td>
-                <td>
-                    g
-                </td>
-                <td>
-                    null
-                </td>
-            </tr>
-            <tr>
-                <td>Example 12</td>
-                <td>
-                    typeof f
-                </td>
-                <td>
-                    'boolean'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 13</td>
-                <td>
-                    typeof g
-                </td>
-                <td>
-                    'object'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 14</td>
-                <td>
-                    h
-                </td>
-                <td>
-                    undefined
-                </td>
-            </tr>
-            <tr>
-                <td>Example 15</td>
-                <td>
-                    typeof h
-                </td>
-                <td>
-                    'undefined'
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                </th>
+                <th>Answer</th>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        d
+                    </td>
+                    <td>
+                        'firstname'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        e
+                    </td>
+                    <td>
+                        -25
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        typeof d
+                    </td>
+                    <td>
+                        'string'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        typeof e
+                    </td>
+                    <td>
+                        'number'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        typeof "hello world"
+                    </td>
+                    <td>
+                        'string'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        typeof 24
+                    </td>
+                    <td>
+                        'number'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        typeof NULL
+                    </td>
+                    <td>
+                        'undefined'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 8</td>
+                    <td>
+                        typeof null
+                    </td>
+                    <td>
+                        'object'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 9</td>
+                    <td>
+                        typeof [1,2,3]
+                    </td>
+                    <td>
+                        'object'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 10</td>
+                    <td>
+                        f
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 11</td>
+                    <td>
+                        g
+                    </td>
+                    <td>
+                        null
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 12</td>
+                    <td>
+                        typeof f
+                    </td>
+                    <td>
+                        'boolean'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 13</td>
+                    <td>
+                        typeof g
+                    </td>
+                    <td>
+                        'object'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 14</td>
+                    <td>
+                        h
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 15</td>
+                    <td>
+                        typeof h
+                    </td>
+                    <td>
+                        'undefined'
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <br>
-    <br>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tbody>
-            <th>Premitive Datatypes example with symbol </th>
-            <th>
-                <pre>
+        <br>
+        <br>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>Premitive Datatypes example with symbol </th>
+                <th>
+                    <pre>
 
 // symbol:
 // unique immutable value
@@ -435,100 +711,100 @@ let obj = { uid: 1, name: "test", email: "test@test.com" };
 let u3 = "uid";
 let u4 = Symbol("uid");
 // obj[u3] = "001";</pre>
-            </th>
-            <th>Answer</th>
+                </th>
+                <th>Answer</th>
 
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    u1
-                </td>
-                <td>
-                    Symbol(uid)
-                </td>
-            </tr>
-            <tr>
-                <td>Example 2</td>
-                <td>
-                    u2
-                </td>
-                <td>
-                    Symbol(uid)
-                </td>
-            </tr>
-            <tr>
-                <td>Example 3</td>
-                <td>
-                    u3
-                </td>
-                <td>
-                    'uid'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 4</td>
-                <td>
-                    u4
-                </td>
-                <td>
-                    Symbol(uid)
-                </td>
-            </tr>
-            <tr>
-                <td>Example 5</td>
-                <td>
-                    obj
-                </td>
-                <td>
-                    {uid: 1, name: 'test', email: 'test@test.com'}
-                </td>
-            </tr>
-            <tr>
-                <td>Example 6</td>
-                <td>
-                    obj[u3] = "2"
-                </td>
-                <td>
-                    '2'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 7</td>
-                <td>
-                    obj
-                </td>
-                <td>
-                    {uid: '2', name: 'test', email: 'test@test.com'}
-                </td>
-            </tr>
-            <tr>
-                <td>Example 8</td>
-                <td>
-                    obj[u4] = "3"
-                </td>
-                <td>
-                    '3'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 9</td>
-                <td>
-                    obj
-                </td>
-                <td>
-                    {uid: '2', name: 'test', email: 'test@test.com', Symbol(uid): '3'}
-                </td>
-            </tr>
-        </tbody>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        u1
+                    </td>
+                    <td>
+                        Symbol(uid)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        u2
+                    </td>
+                    <td>
+                        Symbol(uid)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        u3
+                    </td>
+                    <td>
+                        'uid'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        u4
+                    </td>
+                    <td>
+                        Symbol(uid)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        obj
+                    </td>
+                    <td>
+                        {uid: 1, name: 'test', email: 'test@test.com'}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        obj[u3] = "2"
+                    </td>
+                    <td>
+                        '2'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        obj
+                    </td>
+                    <td>
+                        {uid: '2', name: 'test', email: 'test@test.com'}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 8</td>
+                    <td>
+                        obj[u4] = "3"
+                    </td>
+                    <td>
+                        '3'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 9</td>
+                    <td>
+                        obj
+                    </td>
+                    <td>
+                        {uid: '2', name: 'test', email: 'test@test.com', Symbol(uid): '3'}
+                    </td>
+                </tr>
+            </tbody>
 
+        </table>
         <br>
         <br>
-    </table>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tbody>
-            <th>Premitive Datatypes example with bigint </th>
-            <th>
-                <pre>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>Premitive Datatypes example with bigint </th>
+                <th>
+                    <pre>
 
 //bigint:
 // cheak range of number, Number.MAX_SAFE_INTEGER
@@ -536,46 +812,46 @@ let number = 9007199254740991;
 number = number + 6;
 let num2 = 9007199254740991n;
 num2 + 4n;</pre>
-            </th>
-            <th>Answer</th>
+                </th>
+                <th>Answer</th>
 
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    number
-                </td>
-                <td>
-                    9007199254740997
-                </td>
-            </tr>
-            <tr>
-                <td>Example 2</td>
-                <td>
-                    num2
-                </td>
-                <td>
-                    9007199254740991n
-                </td>
-            </tr>
-            <tr>
-                <td>Example 3</td>
-                <td>
-                    num2 + 10n
-                </td>
-                <td>
-                    9007199254741001n
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <br>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        number
+                    </td>
+                    <td>
+                        9007199254740997
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        num2
+                    </td>
+                    <td>
+                        9007199254740991n
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        num2 + 10n
+                    </td>
+                    <td>
+                        9007199254741001n
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
 
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tbody>
-            <th>Non-Primitive Data Types </th>
-            <th>
-                <pre>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>Non-Primitive Data Types </th>
+                <th>
+                    <pre>
 // types: arrays [], objects {}, functoins ()
 let temp_array = ["user1", "user2", "user3"];
 let temp_obj = { name: "test", age: 9, phone_number: 558998554 };
@@ -585,29 +861,29 @@ let profiles = [
     { name: "test3", age: 11, phone_number: 9898975575 },
 ];
 function name(params) {}</pre>
-            </th>
-            <th>Answer</th>
+                </th>
+                <th>Answer</th>
 
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    temp_array
-                </td>
-                <td>
-                    ['user1', 'user2', 'user3']
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        temp_array
+                    </td>
+                    <td>
+                        ['user1', 'user2', 'user3']
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <br>
-    <br>
+        <br>
+        <br>
 
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tbody>
-            <th> Dynamic Typing</th>
-            <th>
-                <pre>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th> Dynamic Typing</th>
+                <th>
+                    <pre>
 let u_name = "username"; // string
 u_name = 123; // number
 u_name = {}; // object
@@ -621,101 +897,101 @@ null, 1 + "1", 1 == "1", 1 === "1"
 // NaN is a failed number oprations that why that type is
 number
 // ex. "hello" - 5 --> NaN</pre>
-            </th>
-            <th>Answer</th>
+                </th>
+                <th>Answer</th>
 
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    u_name
-                </td>
-                <td>
-                    123
-                </td>
-            </tr>
-            <tr>
-                <td>Example 2</td>
-                <td>
-                    typeof u_name
-                </td>
-                <td>
-                    'number'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 3</td>
-                <td>
-                    typeof NaN
-                </td>
-                <td>
-                    'number'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 4</td>
-                <td>
-                    let A = "Hello" + 5
-                </td>
-                <td>
-                    undefined
-                </td>
-            </tr>
-            <tr>
-                <td>Example 5</td>
-                <td>
-                    typeof A
-                </td>
-                <td>
-                    'undefined'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 6</td>
-                <td>
-                    let B = "Hello" - 5
-                </td>
-                <td>
-                    undefined
-                </td>
-            </tr>
-            <tr>
-                <td>Example 7</td>
-                <td>
-                    typeof b
-                </td>
-                <td>
-                    'undefined'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 8</td>
-                <td>
-                    A
-                </td>
-                <td>
-                    'Hello5'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 9</td>
-                <td>
-                    B
-                </td>
-                <td>
-                    NaN
-                </td>
-            </tr>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        u_name
+                    </td>
+                    <td>
+                        123
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        typeof u_name
+                    </td>
+                    <td>
+                        'number'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        typeof NaN
+                    </td>
+                    <td>
+                        'number'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        let A = "Hello" + 5
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        typeof A
+                    </td>
+                    <td>
+                        'undefined'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        let B = "Hello" - 5
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        typeof b
+                    </td>
+                    <td>
+                        'undefined'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 8</td>
+                    <td>
+                        A
+                    </td>
+                    <td>
+                        'Hello5'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 9</td>
+                    <td>
+                        B
+                    </td>
+                    <td>
+                        NaN
+                    </td>
+                </tr>
 
-        </tbody>
-    </table>
-    <br>
-    <br>
+            </tbody>
+        </table>
+        <br>
+        <br>
 
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tbody>
-            <th> Truthy vs Falsy Values</th>
-            <th>
-                <pre>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th> Truthy vs Falsy Values</th>
+                <th>
+                    <pre>
 // type coeration
 // "5" + 1 // + --> Value Add and Coeration(Mix)
 // "5" - 1
@@ -726,179 +1002,1252 @@ number
 // ex. if(null){}, js convert it into false
 // ex. if(-1){}, js convert it into true
 // all --> true</pre>
-            </th>
-            <th>Answer</th>
+                </th>
+                <th>Answer</th>
 
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    10 + "10"
-                </td>
-                <td>
-                    '1010'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 2</td>
-                <td>
-                    10 == "10"
-                </td>
-                <td>
-                    true
-                </td>
-            </tr>
-            <tr>
-                <td>Example 3</td>
-                <td>
-                    10 === "10"
-                </td>
-                <td>
-                    false
-                </td>
-            </tr>
-            <tr>
-                <td>Example 4</td>
-                <td>
-                    "hello" + " world"
-                </td>
-                <td>
-                    'hello world'
-                </td>
-            </tr>
-            <tr>
-                <td>Example 5</td>
-                <td>
-                    10 - "5"
-                </td>
-                <td>
-                    5
-                </td>
-            </tr>
-            <tr>
-                <td>Example 6</td>
-                <td>
-                    !!0
-                </td>
-                <td>
-                    false
-                </td>
-            </tr>
-            <tr>
-                <td>Example 7</td>
-                <td>
-                    !!21
-                </td>
-                <td>
-                    true
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        10 + "10"
+                    </td>
+                    <td>
+                        '1010'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        10 == "10"
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        10 === "10"
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        "hello" + " world"
+                    </td>
+                    <td>
+                        'hello world'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        10 - "5"
+                    </td>
+                    <td>
+                        5
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        !!0
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        !!21
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <br>
-    <br>
-    <h1>Javascript Datatype</h1>
-    <table border="1" cellpadding="8" cellspacing="0">
-        <tbody>
-            <tr>
-                <th>Example</th>
-                <th>Code</th>
-                <th>Output / Error</th>
-                <th>Explanation</th>
-            </tr>
-            <tr>
-                <td>Example 1</td>
-                <td>
-                    true + false
-                </td>
-                <td>
-                    1
-                </td>
-                <td>
-                    why : true + false = 1 because true = 1 and false = 0 and 1 + 0 = 1
-                </td>
-            </tr>
-            <tr>
-                <td>Example 2</td>
-                <td>
-                    null + 1
-                </td>
-                <td>
-                    1
-                </td>
-                <td>
-                    why : null + 1 = 1 because null = 0 and 0 + 1 = 1
-                </td>
-            </tr>
-            <tr>
-                <td>Example 3</td>
-                <td>
-                    "12" + 12
-                </td>
-                <td>
-                    "1212"
-                </td>
-                <td>
-                    why : "12" + 12 = "1212" because "12" = "12" and "12" + "12" = "1212"
-                </td>
-            </tr>
-            <tr>
-                <td>Example 4</td>
-                <td>
-                    !! undefined
-                </td>
-                <td>
-                    false
-                </td>
-                <td>
-                    why : !! undefined = false because !! undefined = false
-                </td>
-            </tr>
-            <tr>
-                <td>Example 5</td>
-                <td>
-                    "12" - 1
-                </td>
-                <td>
-                    11
-                </td>
-                <td>
-                    why : "12" - 1 = 11 because "12" = "12" and "12" - 1 = 11
-                </td>
-            </tr>
-            <tr>
-                <td>Example 6</td>
-                <td>
-                    typeof NaN
-                </td>
-                <td>
-                    number
-                </td>
-                <td>
-                    why : typeof NaN = number because NaN is a failed number oprations that why that type is number
-                </td>
-            </tr>
-            <tr>
-                <td>Example 7</td>
-                <td>
-                    Undefined vs Null
-                </td>
-                <td>
+        <br>
+        <br>
+        <h1>Javascript Datatype</h1>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <tr>
+                    <th>Example</th>
+                    <th>Code</th>
+                    <th>Output / Error</th>
+                    <th>Explanation</th>
+                </tr>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        true + false
+                    </td>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        why : true + false = 1 because true = 1 and false = 0 and 1 + 0 = 1
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        null + 1
+                    </td>
+                    <td>
+                        1
+                    </td>
+                    <td>
+                        why : null + 1 = 1 because null = 0 and 0 + 1 = 1
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        "12" + 12
+                    </td>
+                    <td>
+                        "1212"
+                    </td>
+                    <td>
+                        why : "12" + 12 = "1212" because "12" = "12" and "12" + "12" = "1212"
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        !! undefined
+                    </td>
+                    <td>
+                        false
+                    </td>
+                    <td>
+                        why : !! undefined = false because !! undefined = false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        "12" - 1
+                    </td>
+                    <td>
+                        11
+                    </td>
+                    <td>
+                        why : "12" - 1 = 11 because "12" = "12" and "12" - 1 = 11
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        typeof NaN
+                    </td>
+                    <td>
+                        number
+                    </td>
+                    <td>
+                        why : typeof NaN = number because NaN is a failed number oprations that why that type is number
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        Undefined vs Null
+                    </td>
+                    <td>
 
-                    <p>let x;</p>
-                    <p>console.log(x);</p>
-                    <p>let y = null;</p>
-                    <p>console.log(y);</p>
-                    undefined
-                </td>
-                <td>
-                    why : let x; = undefined and let y = null; = null
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                        <p>let x;</p>
+                        <p>console.log(x);</p>
+                        <p>let y = null;</p>
+                        <p>console.log(y);</p>
+                        undefined
+                    </td>
+                    <td>
+                        why : let x; = undefined and let y = null; = null
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <h1>operators : Arithmetic, comparison, logical, assignment, unary, ternary</h1>
+        <h3>Arithmetic:</h3>
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>
+                    <h3>Arithmetic:</h3>
+                </th>
+                <th>
+                    <pre>
+
+// Arithmetic:
+// +, -, /, *, **, %
+// + --> Add and concatenation
+// ex. 1+2 --> Add
+// "user" + "name" --> concat
+// 5 + "5" --> concat, 5 + 5 --> Add
+// -
+// ex. 2 - 1
+// /, *
+// ex. 240/2, 25*2
+// % (modulus) (sheshfal) (reminder)
+// ex. 12%4 --> 0
+// ex. 9%2 --> 1
+// ** (square) (exposination)
+// ex. 2**3 --> 8</pre>
+                </th>
+                <th>Answer</th>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        1+2
+                    </td>
+                    <td>
+                        3
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        5 + "5"
+                    </td>
+                    <td>
+                        '55'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        5 + 5
+                    </td>
+                    <td>
+                        10
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        2-1
+                    </td>
+                    <td>
+                        1
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        240/2
+                    </td>
+                    <td>
+                        120
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        25*2
+                    </td>
+                    <td>
+                        50
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        12%2
+                    </td>
+                    <td>
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 8</td>
+                    <td>
+                        9%2
+                    </td>
+                    <td>
+                        1
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 9</td>
+                    <td>
+                        29%3
+                    </td>
+                    <td>
+                        2
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 10</td>
+                    <td>
+                        2**3
+                    </td>
+                    <td>
+                        8
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 11</td>
+                    <td>
+                        5**3
+                    </td>
+                    <td>
+                        125
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <br><br>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>
+                    <h3>Comparison:</h3>
+                </th>
+                <th>
+                    <pre>
+// Comparison (ans: true, false)
+// ==
+// ex. 12 == 13, 12 == "12" (don't check type, only check value, not strict comparison)
+// ===
+// ex. 12 === "12" (check type and value, strict comparaison)
+// !=
+// ex. 12 != 13 (reverse of ==, not strict comparison)
+// !==
+// ex. 12 !== "12" (reverse of ===)
+// >=
+// ex. 22 >= 22
+// <=
+// ex. 13 <= 13
+// <
+// ex. 12 < 113, 12 < 9, 22 < 22
+// >
+// ex. 12 > 113, 12 > 9, 13 > 13</pre>
+                </th>
+                <th>Answer</th>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        12 == 13
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        12 == "12"
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        12 === "12"
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        12!= 13
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        12!=="12"
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        22 >= 22
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        22 <= 22 </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 8</td>
+                    <td>
+                        12<113 </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 9</td>
+                    <td>
+                        12<9 </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 10</td>
+                    <td>
+                        22<22 </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 11</td>
+                    <td>
+                        12>113
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 12</td>
+                    <td>
+                        12>9
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 13</td>
+                    <td>
+                        13>13
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br><br>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>
+                    <h3>assignment:</h3>
+                </th>
+                <th>
+                    <pre>
+
+// assignment operators
+// =
+// give a value , value assignment operator
+// ex. let a = 12;
+// +=
+// ex. a += 3; (add value into old value and save it into a )
+// -=
+// ex. a -= 4 (subtract value from old value and save it into a )
+// *=
+// ex. a *= 2;
+// /=
+// ex. a /= 2;
+// %=
+// ex. a %= 2; (give remainder)</pre>
+                </th>
+                <th>Answer</th>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        let a = 12;
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        a += 3;
+                    </td>
+                    <td>
+                        15
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        a -= 4;
+                    </td>
+                    <td>
+                        11
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        a *= 2;
+                    </td>
+                    <td>
+                        24
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        a /= 2;
+                    </td>
+                    <td>
+                        12
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        a %= 5;
+                    </td>
+                    <td>
+                        2
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>
+                    <h3>Comparison:</h3>
+                </th>
+                <th>
+                    <pre>
+/// logical
+// && (AND)
+// ex. true && true --> true 12<13 && 14<15 --> true
+// false && true --> false 12<10 && 14 < 15 --> false
+// ture && false --> false
+// false && false --> false
+
+// || (OR)
+// ex. true || true --> true
+// false || true --> true
+// ture || false --> true
+// false || false --> false
+
+// ! (NOT)
+// ex. !true --> false
+// !false --> true
+// !12 --> false --> !!12 --> true</pre>
+                </th>
+                <th>Answer</th>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        12<13 && 14<15 </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        12<10 && 14<15 </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        12<10 || 14<15 </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        !true
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        !!12
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        true && true
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        true && false
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 8</td>
+                    <td>
+                        false && false
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 9</td>
+                    <td>
+                        true || true
+                    </td>
+
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 10</td>
+                    <td>
+                        false || true
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 11</td>
+                    <td>
+                        true || false
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 12</td>
+                    <td>
+                        false || false
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>
+                    <h3>Unary:</h3>
+                </th>
+                <th>
+                    <pre>
+// Unary Oprator
+// + - ! typeof ++ --
+// +
+// covert string to number
+// ex. +"5" --> 5
+// +"Name" --> NaN
+// "5" + 5 --> 55
+// +"5" + 5 --> 10
+//-
+// ex. -5
+// !
+// ex. !12 --> false
+// typeof
+// ex. typeof "name" --> string
+// ++
+// ex. let a = 12
+// a++ --> 12 // post ex. a++ + a => 25
+// ++a --> 13 // pre ex. a++ + a => 26
+// --
+// ex. let a = 12
+// a-- --> 11 // post ex. a-- + a => 23
+// --a --> 11 // pre ex. a-- + a => 22</pre>
+                </th>
+                <th>Answer</th>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        +"5"
+                    </td>
+                    <td>
+                        5
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        typeof 5
+                    </td>
+                    <td>
+                        'number'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        typeof "5"
+                    </td>
+                    <td>
+                        'string'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        typeof +"5"
+                    </td>
+                    <td>
+                        'number'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        +"5" + 5
+                    </td>
+                    <td>
+                        10
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        !12
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        let a = 12
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 8</td>
+                    <td>
+                        a++
+                    </td>
+                    <td>
+                        12
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 9</td>
+                    <td>
+                        a
+                    </td>
+                    <td>
+                        13
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 10</td>
+                    <td>
+                        let b = 12
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 11</td>
+                    <td>
+                        ++a
+                    </td>
+                    <td>
+                        14
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 12</td>
+                    <td>
+                        ++b
+                    </td>
+                    <td>
+                        13
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 13</td>
+                    <td>
+                        let c = 12
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 14</td>
+                    <td>
+                        c--
+                    </td>
+                    <td>
+                        12
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 15</td>
+                    <td>
+                        c
+                    </td>
+                    <td>
+                        11
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 16</td>
+                    <td>
+                        let d = 12
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 17</td>
+                    <td>
+                        --d
+                    </td>
+                    <td>
+                        11
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <table border="1" cellpadding="8" cellspacing="0">
+            <tbody>
+                <th>
+                    <h3>Ternary:</h3>
+                </th>
+                <th>
+                    <pre>
+// Ternary
+// ? :
+// condition ? true thase to print thase : false thase to print thase
+// let a = 12 > 13 ? console.log("true") : console.log("false");
 
 
+// Type Checking & Reference Data Types
+// typeof null --> object
+// typeof [] --> object, let a = []; a instanceof Array --> true
+// instanceof --> check type of reference data type // don't use typeof for reference data type
+// typeof NaN --> number
+// typeof --> premitive data type mate use karvo
+// instanceof --> reference data type mate use karvo</pre>
+                </th>
+                <th>Answer</th>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        let a = 12 > 13 ? console.log("true") : console.log("false");
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        let a = 12 < 13 ? console.log("true") : console.log("false"); </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        typeof []
+                    </td>
+                    <td>
+                        'object'
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        let a=[1,2,3]
+                    </td>
+                    <td>
+                        undefined
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        a instanceof Array
+                    </td>
+                    <td>
+                        true
+                    </td>
+                </tr>
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        a instanceof String
+                    </td>
+                    <td>
+                        false
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+        <table border="1" cellpadding="8" cellspacing="0">
+
+            <h1>JavaScript operators:</h1>
+
+            <tbody>
+                <tr>
+                    <th>Example</th>
+                    <th>Code</th>
+                    <th>Output / Error</th>
+                    <th>Explanation</th>
+                </tr>
+                <tr>
+                    <td>Example 1</td>
+                    <td>
+                        let x = 10;<br>
+                        let y = 20;<br>
+                        if(x > 5 && y > 5){
+                        console.log("Both are greater than 5");
+                        }
+                    </td>
+                    <td>
+                        Both are greater than 5
+                    </td>
+                    <td>
+                        x > 5 is true and y > 5 is true. true && true = true, so if block runs.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 2</td>
+                    <td>
+                        let isAdmin = true;<br>
+                        let isLoggedIn = false;<br>
+                        if(isAdmin || isLoggedIn){
+                        console.log("Access granted");
+                        }
+                    </td>
+                    <td>
+                        Access granted
+                    </td>
+                    <td>
+                        true || false = true, so access is granted.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 3</td>
+                    <td>
+                        let temp = 35;<br>
+                        if(!(temp > 30)){
+                        console.log("Hot day");
+                        } else {
+                        console.log("Pleasant day");
+                        }
+                    </td>
+                    <td>
+                        Pleasant day
+                    </td>
+                    <td>
+                        temp > 30 is true, !true becomes false, so else block runs.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 4</td>
+                    <td>
+                        let a = 0;<br>
+                        if(a){
+                        console.log("Truthy value");
+                        } else {
+                        console.log("Falsy value");
+                        }
+                    </td>
+                    <td>
+                        Falsy value
+                    </td>
+                    <td>
+                        0 is a falsy value in JavaScript.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 5</td>
+                    <td>
+                        let score = 78;<br>
+                        let grade = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : "D";<br>
+                        console.log(grade);
+                    </td>
+                    <td>
+                        C
+                    </td>
+                    <td>
+                        Score is greater than 70 but less than 80, so grade is C.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 6</td>
+                    <td>
+                        let points = 120;<br>
+                        let status = points >= 100 ? "Gold" : points >= 50 ? "Silver" : "Bronze";<br>
+                        console.log(status);
+                    </td>
+                    <td>
+                        Gold
+                    </td>
+                    <td>
+                        Points are greater than 100, so status is Gold.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 7</td>
+                    <td>
+                        let loggedIn = true;<br>
+                        let hasToken = false;<br>
+                        let access = loggedIn && hasToken ? "Allow" : "Deny";<br>
+                        console.log(access);
+                    </td>
+                    <td>
+                        Deny
+                    </td>
+                    <td>
+                        true && false = false, so access is Deny.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 8</td>
+                    <td>
+                        let a = 5;<br>
+                        a++;<br>
+                        console.log(a);
+                    </td>
+                    <td>
+                        6
+                    </td>
+                    <td>
+                        Post-increment increases value by 1 after execution.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 9</td>
+                    <td>
+                        let a = 8;<br>
+                        ++a;<br>
+                        console.log(a);
+                    </td>
+                    <td>
+                        9
+                    </td>
+                    <td>
+                        Pre-increment increases value before execution.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 10</td>
+                    <td>
+                        let b = 4;<br>
+                        let c = b++;<br>
+                        console.log(b, c);
+                    </td>
+                    <td>
+                        5 4
+                    </td>
+                    <td>
+                        c gets old value (4), then b becomes 5.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 11</td>
+                    <td>
+                        let b = 4;<br>
+                        let c = ++b;<br>
+                        console.log(b, c);
+                    </td>
+                    <td>
+                        5 5
+                    </td>
+                    <td>
+                        b is incremented first, then assigned to c.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 12</td>
+                    <td>
+                        let m = 10;<br>
+                        console.log(m--);<br>
+                        console.log(m);
+                    </td>
+                    <td>
+                        10<br>
+                        9
+                    </td>
+                    <td>
+                        First prints 10, then decrements m to 9.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 13</td>
+                    <td>
+                        let n = 5;<br>
+                        let result = n++ + ++n;<br>
+                        console.log(result);
+                    </td>
+                    <td>
+                        12
+                    </td>
+                    <td>
+                        n++ gives 5, ++n makes it 7, so 5 + 7 = 12.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 14</td>
+                    <td>
+                        let likes = 100;<br>
+                        function likePost(){<br>
+                        result ++likes;<br>
+                        }<br>
+                        console.log(likePost());
+                    </td>
+                    <td>
+                        Error
+                    </td>
+                    <td>
+                        Invalid syntax. "result ++likes" is not valid JavaScript.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Example 15</td>
+                    <td>
+                        let count = 5;<br>
+                        if(count-- === 5){
+                        console.log("Matched");
+                        }
+                    </td>
+                    <td>
+                        Matched
+                    </td>
+                    <td>
+                        count-- compares first (5 === 5 is true), then count becomes 4.
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>JavaScript Learning is a comprehensive guide to understanding JavaScript fundamentals
+                    including
+                    variables, data types, and operators.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#variables">Variables & Scope</a></li>
+                    <li><a href="#datatypes">Data Types</a></li>
+                    <li><a href="#operators">Operators & Logic</a></li>
+                    <li><a href="#examples">More Examples</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/" target="_blank">MDN
+                            Documentation</a></li>
+                    <li><a href="https://www.javascript.info/" target="_blank">JavaScript.info</a></li>
+                    <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <p>Follow us on social media for updates and new content.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" title="Facebook">f</a>
+                    <a href="https://twitter.com" target="_blank" title="Twitter">𝕏</a>
+                    <a href="https://linkedin.com" target="_blank" title="LinkedIn">in</a>
+                    <a href="https://github.com" target="_blank" title="GitHub">⚙</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>
+                <p>&copy; 2026 JavaScript Learning. All rights reserved. | <a href="#privacy"
+                        style="display: inline;">Privacy Policy</a> | <a href="#terms" style="display: inline;">Terms of
+                        Service</a></p>
+            </div>
+            <div>
+                <p>Made with ❤️ by <strong>Harshad</strong></p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

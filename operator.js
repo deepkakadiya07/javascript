@@ -102,3 +102,99 @@
 // typeof NaN --> number
 // typeof --> premetive data types mate use karvo 
 // instanceof --> reference data types mate use karvo
+
+// examples: 1
+let x = 10;
+let y = 20;
+if(x>5 && y > 5){
+    console.log("Both are greater than 5");
+}else{
+    console.log("One or both are not greater than 5");
+}
+
+// examples: 2
+let isAdmin = true;
+let isLoggedIn = false;
+if(isAdmin || isLoggedIn){
+    console.log("Acess granted");
+}else{
+    console.log("Acess Denied");
+}
+
+// examples: 3
+let temp = 35;
+if(!(temp > 30)){
+    console.log("Hot day");
+}else{
+    console.log("Pleasant day");
+}
+
+// examples: 4
+let a = 0;
+if(a){
+    console.log("Truthy value");
+}else{
+    console.log("Falsy value");
+}
+
+// examples: 5
+let score = 78;
+let grade = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : "D";
+console.log("Grade:", grade);
+
+// examples: 6
+let points = 120;
+let status = points >= 100 ? "Gold" : points >= 50 ? "Silver" : "Bronze";
+console.log("Status:", status);
+
+// examples: 7
+let loggedIn = true;
+let hasToken = false;
+let access = loggedIn && hasToken ? "Allow" : "Deny";
+console.log("access:", access);
+
+// examples: 8
+let temp_a = 5;
+temp_a++
+console.log(temp_a);
+
+// examples: 9
+let b = 8;
+++b;
+console.log(b);
+
+// examples: 10
+let temp_b = 4;
+let c = temp_b++;
+console.log(temp_b, c);
+
+// examples: 11
+let d = 4;
+let temp_c = ++d;
+console.log(d, temp_c);
+
+// examples: 12
+let m = 10;
+console.log(m--);
+console.log(m);
+
+// examples: 13
+let n = 5;
+let result = n++ + ++n;
+console.log(result);
+
+// examples: 14
+let likes = 100;
+function likePost(){
+    likes++;
+}
+console.log(likePost());
+console.log(likes);
+
+// examples: 15
+let count = 5;
+if(count-- === 5){   
+console.log("Matched");
+}else{
+    console.log("Not Matched"); 
+}
